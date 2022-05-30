@@ -1,0 +1,7 @@
+<span *ngIf="(filed.dirty||filed.touched) && filed.errors?.['required']" class="text-red-600"> ko dc de trong</span>
+<span *ngIf="(filed.dirty||filed.touched) && filed.errors?.['min']" class="text-red-600"> toi thieu 1</span>
+<span *ngIf="(filed.dirty||filed.touched) && filed.errors?.['max']" class="text-red-600"> toi da 150</span>
+<span *ngIf="(filed.dirty||filed.touched)&& filed.errors?.['required']" class="text-red-600"> ko dc
+    de trong</span> <br>
+<span *ngIf="(filed.dirty||filed.touched) && filed.errors?.['minlength']" class="text-red-600">ten
+    ko {{filed.errors?.['minlength'].requiredLength}}</span> <br>

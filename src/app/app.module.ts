@@ -8,7 +8,13 @@ import { ClientComponent } from './layout/client/client.component';
 import { HeaderComponent } from './layout/client/header/header.component';
 import { HomeMainComponent } from './layout/client/home-main/home-main.component';
 import { DetailHomeComponent } from './layout/client/detail-home/detail-home.component';
+import { ListComponent } from './layout/admin/prd-admin/list/list.component';
+import { AddComponent } from './layout/admin/prd-admin/add/add.component';
+import { EditComponent } from './layout/admin/prd-admin/edit/edit.component';
+import { DetailComponent } from './layout/admin/prd-admin/detail/detail.component';
 
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +22,21 @@ import { DetailHomeComponent } from './layout/client/detail-home/detail-home.com
     ClientComponent,
     HeaderComponent,
     HomeMainComponent,
-    DetailHomeComponent
+    DetailHomeComponent,
+    ListComponent,
+    AddComponent,
+    EditComponent,
+    DetailComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
