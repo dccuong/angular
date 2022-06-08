@@ -2,62 +2,44 @@
         routerLink="add">add</a></button>
 <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="py-2 inline-block min-w-full sm:px-4 lg:px-8">
             <div class="overflow-hidden">
                 <table class="min-w-full">
                     <thead class="border-b">
                         <tr>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                #
+
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
+                                Name
                             </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                First
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
+                                Price
                             </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Last
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
+                                Img
                             </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Handle
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
+                                button
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Mark
+                        <tr class="border-b" *ngFor="let prd of products ">
+
+                            <td class="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
+                                {{prd.name}}
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Otto
+                            <td class="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
+                                {{prd.price}}
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                @mdo
+                            <td class="text-sm max-w-[100px] text-gray-900 font-light px-4 py-4 whitespace-nowrap">
+                                <img src={{prd.img}} class="w-[50px] h-[50px] " alt="">
                             </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Jacob
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Thornton
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                @fat
+                            <td class="text-sm max-w-[100px] text-gray-900 font-light px-4 py-4 whitespace-nowrap">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                    (click)="ondelete(prd._id)">delete</button>
                             </td>
                         </tr>
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Larry
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Wild
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                @twitter
-                            </td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
