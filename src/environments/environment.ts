@@ -5,7 +5,10 @@ const apiUrl = "http://127.0.0.1:3009"
 export const environment = {
   production: false,
   products: `${apiUrl}/api/products`,
-  product: `${apiUrl}/api/product`
+  product: `${apiUrl}/api/product`,
+  cate: `${apiUrl}/api/category`,
+  signup: `${apiUrl}/api/signup`,
+  signin: `${apiUrl}/api/signin`
 };
 
 /*

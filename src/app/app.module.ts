@@ -11,11 +11,15 @@ import { DetailHomeComponent } from './layout/client/detail-home/detail-home.com
 import { ListComponent } from './layout/admin/prd-admin/list/list.component';
 import { AddComponent } from './layout/admin/prd-admin/add/add.component';
 import { EditComponent } from './layout/admin/prd-admin/edit/edit.component';
-import { DetailComponent } from './layout/admin/prd-admin/detail/detail.component';
-
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddCComponent } from './layout/admin/cate-admin/add-c/add-c.component';
+import { ListCComponent } from './layout/admin/cate-admin/list-c/list-c.component';
+import { SignInComponent } from './layout/client/sign-in/sign-in.component';
+import { SignUpComponent } from './layout/client/sign-up/sign-up.component';
+import { ValidateComponent } from './components/validate/validate.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListComponent,
     AddComponent,
     EditComponent,
-    DetailComponent,
+    AddCComponent,
+    ListCComponent,
+    SignInComponent,
+    SignUpComponent,
+    ValidateComponent
+
 
 
 
@@ -37,7 +46,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
 
   ],
   providers: [],

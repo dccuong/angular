@@ -12,34 +12,25 @@
                                 Name
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
-                                Price
+                                id
                             </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
-                                Img
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-4 py-4 text-left">
-                                button
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b" *ngFor="let prd of products ">
+                        <tr class="border-b" *ngFor="let prd of category ">
 
                             <td class="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
                                 {{prd.name}}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                {{prd.price}}
+                                {{prd._id}}
                             </td>
-                            <td class="text-sm max-w-[100px] text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                <img src={{prd.img}} class="w-[50px] h-[50px] " alt="">
-                            </td>
-                            <td class="text-sm max-w-[100px] text-gray-900 font-light px-4 py-4 whitespace-nowrap">
+
+                            <!-- <td class="text-sm max-w-[100px] text-gray-900 font-light px-4 py-4 whitespace-nowrap">
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                     (click)="ondelete(prd._id)">delete</button>
-                            </td>
-                            <a routerLink="/admin/products/edit/{{prd._id}}"> <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">edit</button></a>
+                            </td> -->
                         </tr>
 
                     </tbody>

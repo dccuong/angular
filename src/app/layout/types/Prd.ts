@@ -4,6 +4,7 @@ export type Prd = {
     price: number,
     img: string,
     desc: string,
+    category: string
 }
 export type PrdAdd = {
     name: string,
@@ -11,4 +12,8 @@ export type PrdAdd = {
     img: string,
     desc: string,
     category: string
+}
+export type cate = {
+    _id: string,
+    name: string,
 }

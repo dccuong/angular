@@ -26,6 +26,6 @@ export class ProductService {
     return this.http.post<Prd>(environment.products, prd)
   }
   updatePrd(id: string, data: PrdAdd): Observable<Prd> {
-    return this.http.patch<Prd>(`${environment.products}/${id}`, data)
+    return this.http.put<Prd>(`${environment.products}/${id}`, data)
   }
 }

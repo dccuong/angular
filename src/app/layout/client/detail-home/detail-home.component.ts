@@ -23,7 +23,7 @@ export class DetailHomeComponent implements OnInit {
       price: 0,
       desc: "",
       img: "",
-      // category: ""
+      category: ""
 
     }
   }
