@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Prd } from '../layout/types/Prd';
+import { bookcart, Prd } from '../layout/types/Prd';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoaclstorateService {
 
-  constructor() { }
-  // Định nghĩa xem làm cách nào để lắng nghe được lúc thay đổi của ls
-  private serviceSubject = new Subject<string>(); // vừa giống Observerble có thể lắng nghe được, vừa phát được sự kiện để lắng nghe
+  // 1. Định nghĩa việc lắng nghe thay đổi bằng cách khởi tạo 1 Subject
+  // Trong subject sẽ có phương thức bắt sự kiện thay đổi để phát hành động tiếp theo
+  private storageSubject = new Subject<string>();
 
-  watchService(): Observable<any> {
-    return this.serviceSubject.asObservable();
+  watchStorage(): Observable<any> {
+    return this.storageSubject.asObservable();
   }
+  // Tất cả các xử lý của ls sẽ thực hiện ở đây, để kích hoạt việc lắng nghe
 
   getItem() {
     return JSON.parse(localStorage.getItem('cart') || '[]');
   }
 
-  setItem(addItem: Prd) {
-    // 1. Cập nhật dữ liệu vào ls
+  setItem(addItem: bookcart) {
+    // Nghiệp vụ thêm sp vào giỏ
+    // 1. Lấy ra toàn bộ sp trong giỏ
     const cartItems = this.getItem();
-    const existItem = cartItems.find((item: Prd) => item._id === addItem._id);
+    // 2. kiểm tra trong giỏ đã có phần tử có id giống cartItem chưa
+    const existItem = cartItems.find((item: bookcart) =>
+      item._id === addItem._id
+    );
     if (!existItem) {
       cartItems.push(addItem);
     } else {
-      existItem.value += addItem;
+      existItem.quantity += addItem.quantity;
     }
-    localStorage.setItem('cart', JSON.stringify(cartItems));
 
-    // 2. Phát tín hiệu để lắng nghe bên watchService
-    this.serviceSubject.next(''); // báo là vừa thêm rồi đấy, update đi
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    // 3. Sau khi thêm sản phẩm vào giỏ bằng phương thức setItem này
+    this.storageSubject.next('');
+    // thì watchStorage sẽ được phát sự kiện vào subscibe
   }
 }

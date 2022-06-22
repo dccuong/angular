@@ -1,3 +1,4 @@
+
 export type Prd = {
     _id: string,
     name: string,
@@ -16,4 +17,21 @@ export type PrdAdd = {
 export type cate = {
     _id: string,
     name: string,
+    status: number
+}
+export type PrdCate = {
+    category: {
+        _id: string,
+        name: string,
+        status: number
+    },
+    products: Prd[]
+}
+
+export type bookcart = {
+    _id: string,
+    name: string,
+    price: number,
+    img: string,
+    quantity: number
 }

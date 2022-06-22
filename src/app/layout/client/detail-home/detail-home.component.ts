@@ -42,9 +42,12 @@ export class DetailHomeComponent implements OnInit {
   onAddToCart() {
     // 1. Định nghĩa cấu trúc dữ liệu thêm vào giỏ
     const addItem = {
-      id: this.product._id,
+      _id: this.product._id,
       name: this.product.name,
-      value: +this.cartItemValue
+      price: this.product.price,
+      img: this.product.img,
+
+      quantity: +this.cartItemValue
     };
     // // 2. Kiểm tra xem đã có sp này trong giỏ hàng chưa
     // // 2.1 Lấy ra toàn bộ sp trong giỏ
@@ -62,6 +65,8 @@ export class DetailHomeComponent implements OnInit {
     // localStorage.setItem('cart', JSON.stringify(cartItems));
 
     // this.lsService.setItem(addItem);
+    // 5. Cập nhật lại giá trị cho ô input value
+    this.lsService.setItem(addItem);
     // 5. Cập nhật lại giá trị cho ô input value
     this.cartItemValue = 1;
   }

@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
       localStorage.setItem('LogedInUser', JSON.stringify(user))
       this.toastr.success("Đăng nhập thành công")
       setTimeout(() => {
-        this.router.navigateByUrl('/admin/products')
+        this.router.navigateByUrl('/')
       }, 2000)
     })
   }

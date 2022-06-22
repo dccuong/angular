@@ -7,14 +7,17 @@
                 <a routerLink=""
                     class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer">HOME
                 </a>
-                <a routerLink="form"
-                    class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer">CATEGORY
-                </a>
-                <a class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer">BLOG
-                </a>
-                <a class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer">CART
+                <a routerLink="category" class=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
+                    cursor-pointer">CATEGORY
                 </a>
 
+
+                <a routerLink="cart"
+                    class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer">CART
+                </a>
+                <a routerLink="admin" class=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
+                cursor-pointer">admin
+                </a>
 
 
             </div>
@@ -26,13 +29,21 @@
                 </svg>
                 <h1 class="font-normal text-2xl leading-6 text-gray-800">SNO258</h1>
             </div>
-            <div class="hidden sm:flex flex-row space-x-4">
+            <div class="hidden sm:flex flex-row space-x-4" *ngIf="!user">
                 <a routerLink="signup"><button
                         class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-indigo-700 bg-white border border-indigo-700 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center">Sign
                         Up</button></a>
                 <a routerLink="signin"> <button
                         class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">Sign
-                        In</button></a>
+                    </button></a>
+            </div>
+            <div class="hidden sm:flex flex-row space-x-4" *ngIf="user">
+                <a routerLink="admin/"><button
+                        class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-indigo-700 bg-white border border-indigo-700 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center">
+                        admin</button></a>
+                <a> <button (click)="logOut()"
+                        class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">
+                        logout </button></a>
             </div>
 
             <!-- Burger Icon -->

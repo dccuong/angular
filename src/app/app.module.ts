@@ -20,6 +20,10 @@ import { SignInComponent } from './layout/client/sign-in/sign-in.component';
 import { SignUpComponent } from './layout/client/sign-up/sign-up.component';
 import { ValidateComponent } from './components/validate/validate.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CategorylistComponent } from './layout/client/categorylist/categorylist.component';
+import { CartComponent } from './layout/client/cart/cart.component';
+import { AddUserComponent } from './layout/admin/user-ad/add-user/add-user.component';
+import { ListUserComponent } from './layout/admin/user-ad/list-user/list-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +39,11 @@ import { ToastrModule } from 'ngx-toastr';
     ListCComponent,
     SignInComponent,
     SignUpComponent,
-    ValidateComponent
+    ValidateComponent,
+    CategorylistComponent,
+    CartComponent,
+    AddUserComponent,
+    ListUserComponent
 
 
 
