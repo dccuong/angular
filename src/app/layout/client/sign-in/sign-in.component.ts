@@ -24,7 +24,7 @@ export class SignInComponent implements OnInit {
   }
   onSubmit() {
     const data = this.loginForm.value;
-    this.userService.Signin(data).subscribe((user) => {
+    this.userService.dangki(data).subscribe((user) => {
       localStorage.setItem('LogedInUser', JSON.stringify(user))
       this.toastr.success("Đăng nhập thành công")
       setTimeout(() => {
