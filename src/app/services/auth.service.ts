@@ -11,10 +11,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  signin(user: IUser): Observable<IUser> {
+  Signin(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(`${environment.signin}`, user)
   }
-  signup(user: IUser): Observable<IUser> {
+  Signup(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(`${environment.signup}`, user);
   }
   getList(): Observable<IUser[]> {
