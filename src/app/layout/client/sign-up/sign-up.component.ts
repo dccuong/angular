@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     const data = this.userForm.value;
     console.log(data)
-    this.userService.Signup(data).subscribe(() => {
+    this.userService.dangnhap(data).subscribe(() => {
       this.toastr.success("Đăng ký thành công")
       setTimeout(() => {
         this.router.navigateByUrl('/')
