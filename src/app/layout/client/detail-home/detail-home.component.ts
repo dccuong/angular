@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Prd } from '../../types/Prd';
 import { LoaclstorateService } from 'src/app/services/loaclstorate.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-detail-home',
   templateUrl: './detail-home.component.html',
@@ -15,59 +15,44 @@ export class DetailHomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private toastr: ToastrService,
     private activateRoute: ActivatedRoute,
     private lsService: LoaclstorateService) {
     this.product = {
-      _id: "6245375bb36ce30593dea41d",
+      _id: "",
       name: "",
       price: 0,
       desc: "",
       img: "",
       category: ""
-
     }
+    console.log(this.cartItemValue)
   }
 
   ngOnInit(): void {
-
     const _id: string = this.activateRoute.snapshot.params['_id'];
     console.log(_id)
     this.productService.getProduct(_id).subscribe(data => {
       this.product = data
     })
   }
-  onInputValueChange(event: any) {
-    this.cartItemValue = event.target.value;
+  onInputValueChange = (event: any) => {
+    console.log(event.target.value)
+    this.cartItemValue = event.target.value
   }
+
   onAddToCart() {
-    // 1. Định nghĩa cấu trúc dữ liệu thêm vào giỏ
+
+    console.log(this.cartItemValue)
     const addItem = {
       _id: this.product._id,
       name: this.product.name,
       price: this.product.price,
       img: this.product.img,
-
       quantity: +this.cartItemValue
     };
-    // // 2. Kiểm tra xem đã có sp này trong giỏ hàng chưa
-    // // 2.1 Lấy ra toàn bộ sp trong giỏ
-    // const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-    // // 2.2 Tìm phần tử trong giỏ có id === addItem.id
-    // const existItem = cartItems.find((item: ProductCart) => item.id === addItem.id);
-    // // 3. Nếu không có thì push luôn vào làm phần tử mới
-    // if (!existItem) {
-    //   cartItems.push(addItem);
-    // } else {
-    //   // 3.1 Nếu đã có thì cập nhật số lượng mới = số lượng cũ + thêm
-    //   existItem.value += addItem.value;
-    // }
-    // // 4. Cập nhật dữ liệu giỏ hàng
-    // localStorage.setItem('cart', JSON.stringify(cartItems));
-
-    // this.lsService.setItem(addItem);
-    // 5. Cập nhật lại giá trị cho ô input value
     this.lsService.setItem(addItem);
-    // 5. Cập nhật lại giá trị cho ô input value
+    this.toastr.success("thêm thành công")
     this.cartItemValue = 1;
   }
 

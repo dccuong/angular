@@ -1,42 +1,56 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { bookcart, Prd } from '../layout/types/Prd';
-
+import { bookcart } from '../layout/types/Prd';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class LoaclstorateService {
 
-  // 1. Định nghĩa việc lắng nghe thay đổi bằng cách khởi tạo 1 Subject
-  // Trong subject sẽ có phương thức bắt sự kiện thay đổi để phát hành động tiếp theo
-  private storageSubject = new Subject<string>();
+  constructor(private toastr: ToastrService) { }
 
-  watchStorage(): Observable<any> {
-    return this.storageSubject.asObservable();
+  private serviceSubject = new Subject<string>(); // vừa giống Observable có thế lắng nghe được,  vừa phát được sự kiên để lắng nghe
+
+  watchService(): Observable<any> {
+    return this.serviceSubject.asObservable();
   }
-  // Tất cả các xử lý của ls sẽ thực hiện ở đây, để kích hoạt việc lắng nghe
 
   getItem() {
-    return JSON.parse(localStorage.getItem('cart') || '[]');
+    const data = JSON.parse(localStorage.getItem('cart') || '[]');
+    return data
   }
 
   setItem(addItem: bookcart) {
-    // Nghiệp vụ thêm sp vào giỏ
-    // 1. Lấy ra toàn bộ sp trong giỏ
-    const cartItems = this.getItem();
-    // 2. kiểm tra trong giỏ đã có phần tử có id giống cartItem chưa
-    const existItem = cartItems.find((item: bookcart) =>
-      item._id === addItem._id
-    );
+    //1. Cập nhật dữ liệ vào Local
+    const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    const existItem = cartItems.find((item: bookcart) => item._id === addItem._id);
     if (!existItem) {
       cartItems.push(addItem);
     } else {
       existItem.quantity += addItem.quantity;
     }
-
     localStorage.setItem('cart', JSON.stringify(cartItems));
-    // 3. Sau khi thêm sản phẩm vào giỏ bằng phương thức setItem này
-    this.storageSubject.next('');
-    // thì watchStorage sẽ được phát sự kiện vào subscibe
+    this.toastr.success("thêm thành công")
+    this.serviceSubject.next('')
+  }
+  editItem(addItem: bookcart) {
+    //1. Cập nhật dữ liệ vào Local
+    const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    const existItem = cartItems.find((item: bookcart) => item._id === addItem._id);
+    if (!existItem) {
+
+      cartItems.push(addItem);
+    } else {
+      existItem.quantity == addItem.quantity;
+    }
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    this.serviceSubject.next('')
+  }
+
+
+  getUser() {
+    const data = JSON.parse(localStorage.getItem('LogedInUser') || '[]').user
+    console.log(data)
+    return data
   }
 }
